@@ -92,7 +92,9 @@
                     <th>jenis kelamin</th>
                     <th>domisili</th>
                     <th>program studi</th>
-                    <th>Skills</th>
+                    <th>skills</th>
+                    <th>skor</th>
+                    <th>predikat</th>
                 </tr>
                 <?php 
                 if(isset($_POST['submit'])){
@@ -102,7 +104,51 @@
                     $jenis_kelamin = $_POST['jenis_kelamin'];
                     $domisili = $_POST['domisili'];
                     $program_studi = $_POST['program_studi'];
-                    $skills = $_POST['skill'];
+                    $skills = $_POST['skill']; 
+                    $skor = 0;
+
+                    foreach ($skills as $s) {
+                        switch ($s) {
+                            case 'HTML':
+                                $skor += 10;
+                                break;
+                            case 'CSS':
+                                $skor += 10;
+                                break;
+                            case 'Javascript':
+                                $skor += 20;
+                                break;
+                            case 'RWD Bootstrap':
+                                $skor += 20;
+                                break;
+                            case 'PHP':
+                                $skor += 30;
+                                break;
+                            case 'Python':
+                                $skor += 30;
+                                break;
+                            case 'Java':
+                                $skor += 50;
+                                break;
+                            default:
+                                $skor += 0;
+                                break;   
+                            }
+                        }   
+                        
+                        if ($skor == 0) {
+                            $predikat = "Tidak memadai";
+                        } elseif ($skor >= 0 && $skor <= 40) {
+                            $predikat = "Kurang";
+                        } elseif ($skor > 40 && $skor <= 60) {
+                            $predikat = "Cukup";
+                        } elseif ($skor > 60 && $skor <= 100) {
+                            $predikat = "Baik";
+                        } elseif ($skor > 100 && $skor <= 150) {
+                            $predikat = "Sangat baik";
+                        } else {
+                            $predikat = "Nilai di luar jangkauan";
+                        }
                 ?>
                 <tr>
                     <td><?= $nim ?></td>
@@ -111,7 +157,9 @@
                     <td><?= $jenis_kelamin ?></td>
                     <td><?= $domisili ?></td>
                     <td><?= $program_studi ?></td>
-                    <td><?php foreach($skills as $skill){echo $skill . " ";}; ?></td>
+                    <td><?php foreach($skills as $skill){echo $skill . " ";}; ?></td> 
+                    <td><?php echo $skor; ?></td>
+                    <td><?php echo $predikat; ?></td> 
                 </tr>
                 <?php } ?>
             </table>
