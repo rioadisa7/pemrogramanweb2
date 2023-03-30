@@ -5,5 +5,5 @@ $sql = "DELETE FROM pelanggan WHERE id=?";
 $st = $dbh->prepare($sql);
 $st->execute([$_iddel]);
 
-header('location:pelanggan.php');
+header('location:list_pelanggan.php');
 ?>

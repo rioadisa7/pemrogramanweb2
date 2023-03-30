@@ -130,7 +130,7 @@ require_once 'dbkoneksi.php';
       <?php
         $button = (empty($_idedit)) ? "Simpan":"Update";
       ?>
-      <input type="hidden" name="idedit" type="<?=$_idedit?>"/>
+      <input type="hidden" name="idedit" value="<?=$_idedit?>"/>
       <input type="submit" name="proses" type="submit" 
       class="btn btn-primary" value="<?=$button?>"/>
     </div>
