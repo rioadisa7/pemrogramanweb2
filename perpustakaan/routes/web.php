@@ -7,6 +7,8 @@ use App\Http\Controllers\RegistrasiAnggotaController;
 use App\Http\Controllers\PeminjamanBukuController;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BukuController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +58,5 @@ Route::post('hasil-buku',
 // praktikum 10
 Route::get('/dashboard', 
 [DashboardController::class, 'index']); 
+Route::get('/buku', 
+[BukuController::class, 'index']); 
