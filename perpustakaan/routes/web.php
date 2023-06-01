@@ -7,7 +7,10 @@ use App\Http\Controllers\RegistrasiAnggotaController;
 use App\Http\Controllers\PeminjamanBukuController;
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BukuController;
+// use App\Http\Controllers\BukuController;
+
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\MemberController;
 
 
 /*
@@ -56,7 +59,9 @@ Route::post('hasil-buku',
 
 
 // praktikum 10
-Route::get('/dashboard', 
-[DashboardController::class, 'index']); 
-Route::get('/buku', 
-[BukuController::class, 'index']); 
+Route::get('/dashboard', [DashboardController::class, 'index']); 
+// Route::get('/buku', [BukuController::class, 'index']); 
+
+// praktikum 11
+Route::get('/dashboard/book', [BookController::class, 'index']);
+Route::get('/dashboard/member', [MemberController::class, 'index']); 

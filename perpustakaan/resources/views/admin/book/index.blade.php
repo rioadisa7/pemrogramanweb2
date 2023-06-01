@@ -26,22 +26,28 @@
           <h4 class="card-title">Daftar Buku Tersedia</h4>
           <div class="table-responsive">
             <table class="table text-uppercase table-bordered">
+              <thead class="table-success">
             <tr class="table-primary">
                 <th>no</th>
                 <th>judul</th>
                 <th>jumlah tersedia</th>
                 <th>action</th>
             </tr>
+          </thead>
+          <tbody>
+            @foreach ($books as $book) 
             <tr>
-              <td>1</td>
-              <td>Lookism</td>
-              <td>50</td>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $book->title }}</td>
+              <td>{{ $book->stok }}</td>
               <td>
                 <a class="btn btn-success" >View</a>
                 <a class="btn btn-warning" >Edit</a>
                 <a class="btn btn-danger" >Delete</a>
               </td>
             </tr>
+            @endforeach
+          </tbody>
         </table>
           </div>
         </div>
