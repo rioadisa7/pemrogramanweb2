@@ -17,7 +17,7 @@
   </div>
   <div class="row">
     <div class="col-4">
-      <a class="btn btn-primary" href="#" role="button"><i class="mdi mdi-plus-circle-outline"></i> Tambah Buku</a>
+      <a class="btn btn-primary" href="{{ url('dashboard/book/create') }}" role="button"><i class="mdi mdi-plus-circle-outline"></i> Tambah Buku</a>
   </div>
   <div class="row">
     <div class="col-12 grid-margin">
@@ -43,7 +43,11 @@
               <td>
                 <a class="btn btn-success" >View</a>
                 <a class="btn btn-warning" >Edit</a>
-                <a class="btn btn-danger" >Delete</a>
+                <form action="{{ url('/dashboard/book/destroy',$book->id) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn sm">Delete</button>
+                </form>
               </td>
             </tr>
             @endforeach

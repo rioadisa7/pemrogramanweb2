@@ -5,7 +5,7 @@
     <h3 class="page-title">
       <span class="page-title-icon bg-gradient-primary text-white me-2">
         <i class="mdi mdi-home"></i>
-      </span> Daftar Buku
+      </span> Daftar Member
     </h3>
     <nav aria-label="breadcrumb">
       <ul class="breadcrumb">
@@ -17,19 +17,19 @@
   </div>
   <div class="row">
     <div class="col-4">
-      <a class="btn btn-primary" href="#" role="button"><i class="mdi mdi-plus-circle-outline"></i> Tambah Buku</a>
+      <a class="btn btn-primary" href="{{ url('dashboard/member/create') }}" role="button"><i class="mdi mdi-plus-circle-outline"></i> Tambah Member</a>
   </div>
   <div class="row">
     <div class="col-12 grid-margin">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Daftar Buku Tersedia</h4>
+          <h4 class="card-title">Daftar Member Tersedia</h4>
           <div class="table-responsive">
             <table class="table text-uppercase table-bordered">
               <thead class="table-success">
             <tr class="table-primary">
                 <th>no</th>
-                <th>Nama</th>
+                <th>nama</th>
                 <th>email</th>
                 <th>gender</th>              
                 <th>status</th>
@@ -49,7 +49,12 @@
               <td>
                 <a class="btn btn-success" >View</a>
                 <a class="btn btn-warning" >Edit</a>
-                <a class="btn btn-danger" >Delete</a>
+                <form action="{{ url('/dashboard/member/destroy',$members->id) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn sm" onclick="if(!confirm('Anda Yakin Hapus Data Member ?')) {return false}"
+                  >Delete</button>
+                </form>
               </td>
             </tr>
             @endforeach
