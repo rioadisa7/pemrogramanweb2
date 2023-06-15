@@ -50,7 +50,10 @@ class MemberController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $member = Member::find($id);
+        return view('admin.members.show',[
+            'member' => $member
+        ]);
     }
 
     /**
@@ -58,7 +61,10 @@ class MemberController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $member = Member::find($id);
+        return view('admin.members.edit',[
+            'member' => $member
+        ]);
     }
 
     /**
@@ -66,7 +72,18 @@ class MemberController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $member = Member::find($id);
+
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'gender' => 'required',
+            'status' => 'required',
+            'address' => 'required',
+        ]);
+
+        $member->update($validated);
+        return redirect('/dashboard/member')->with('success','Data berhasil di update');
     }
 
     /**

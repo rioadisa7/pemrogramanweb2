@@ -15,19 +15,11 @@
       </ul>
     </nav>
   </div>
-  <div class="row">
-    <div class="col-4">
-      <a class="btn btn-primary" href="{{ url('dashboard/member/create') }}" role="button"><i class="mdi mdi-plus-circle-outline"></i> Tambah Member</a>
-  </div>
+  
   <div class="row">
     <div class="col-12 grid-margin">
       <div class="card">
         <div class="card-body">
-          @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>             
-               @endif
           <h4 class="card-title">Daftar Member Tersedia</h4>
           <div class="table-responsive">
             <table class="table text-uppercase table-bordered">
@@ -39,29 +31,19 @@
                 <th>gender</th>              
                 <th>status</th>
                 <th>Address</th>
-                <th>action</th>
+                <th>Data dibuat</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($members as $member) 
             <tr>
-              <td>{{ $loop->iteration }}</td>
+              <td>{{ $member->id }}</td>
               <td>{{ $member->name }}</td>
               <td>{{ $member->email }}</td>
               <td>{{ $member->gender }}</td>
               <td>{{ $member->status }}</td>
-              <td>{{ $member->address }}</td>
-              <td>
-              <a href="{{ url('/dashboard/member/show',$member->id) }}" class="btn btn-success" >View</a>
-                <a href="{{ url('/dashboard/member/edit',$member->id) }}" class="btn btn-warning" >Edit</a>
-                <form action="{{ url('/dashboard/member/destroy',$member->id) }}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger btn sm">Delete</button>
-                </form>
-              </td>
+              <td>{{ $member->address }}</td>  
+              <td>{{ $member->created_at }}</td>    
             </tr>
-            @endforeach
           </tbody>
         </table>
           </div>
