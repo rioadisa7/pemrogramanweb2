@@ -59,12 +59,12 @@ Route::post('hasil-buku',
 
 
 // praktikum 10
-Route::get('/dashboard', [DashboardController::class, 'index']); 
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth'); 
 // Route::get('/buku', [BukuController::class, 'index']); 
 
 // praktikum 11
-Route::get('/dashboard/book', [BookController::class, 'index']);
-Route::get('/dashboard/member', [MemberController::class, 'index']); 
+Route::get('/dashboard/book', [BookController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/member', [MemberController::class, 'index'])->middleware('auth'); 
 
 // praktikum 12
 Route::get('/dashboard/book/create', [BookController::class, 'create']); 
@@ -82,4 +82,7 @@ Route::get('/dashboard/book/show/{id}', [BookController::class, 'show']);
 
 Route::get('/dashboard/member/edit/{id}', [MemberController::class, 'edit']); 
 Route::put('/dashboard/member/update/{id}', [MemberController::class, 'update']);
-Route::get('/dashboard/member/show/{id}', [MemberController::class, 'show']);
+Route::get('/dashboard/memberhttp://127.0.0.1:8000/show/{id}', [MemberController::class, 'show']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
